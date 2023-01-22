@@ -46,6 +46,21 @@ public class EmployeeserviceImpl implements EmployeeService {
 		return exitingEmployee;
 	
 	}
+	
+	@Override
+	public Employee updateProductByFields(Long id, Map<String, Object> fields) {
+        Optional<Employee> exitingEMP = employeeRepository.findById(id);
+
+        if (exitingEMP.isPresent()) {
+            fields.forEach((key, value) -> {
+                Field field = ReflectionUtils.findField(Employee.class, key);
+                field.setAccessible(true);
+                ReflectionUtils.setField(field, exitingEMP.get(), value);
+            });
+            return employeeRepository.save(exitingEMP.get());
+        }
+        return null;
+    }
 
 	@Override
 	public void deleteEmployee(long id) {
