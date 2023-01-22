@@ -9,7 +9,7 @@ import net.javaguide.springboot.model.Employee;
 @Service
 public interface EmployeeService {
 	
-	Employee saveEmployee(Employee employee); 
+    Employee saveEmployee(Employee employee); 
     List<Employee>getAllEmployee();	
     Employee getEmployeeById(long id);
     Employee updateEmployee(Employee employee, long id);
