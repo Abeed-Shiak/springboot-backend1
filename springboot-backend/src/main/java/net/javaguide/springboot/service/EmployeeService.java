@@ -13,6 +13,7 @@ public interface EmployeeService {
     List<Employee>getAllEmployee();	
     Employee getEmployeeById(long id);
     Employee updateEmployee(Employee employee, long id);
+    Employee updateProductByFields(Long id, Map<String, Object> fields);
     void deleteEmployee(long id);
 
 }
