@@ -33,23 +33,29 @@ public class EmployeeController {
 	public ResponseEntity<Employee>saveEmployee(@RequestBody Employee employee){
 		return new ResponseEntity<Employee>(employeeService.saveEmployee(employee),HttpStatus.OK);
 	}
-	
+	//build Get All Employee
 	@GetMapping
 	public List<Employee>getAllEmployees(){
 		return employeeService.getAllEmployee();
 	}
 	//build get employee by Id Rest Api
-	
 	@GetMapping("{id}")
 	public ResponseEntity<Employee>findById(@PathVariable("id")long employeeId){
 		return new ResponseEntity<Employee>(employeeService.getEmployeeById(employeeId),HttpStatus.OK);
 	}
 	
-     //build update employee REST API
+       //build update employee REST API
 	@PutMapping("{id}")
 	public ResponseEntity<Employee>updateEmployee(@PathVariable("id")long id, @RequestBody Employee employee){
 		return new ResponseEntity<Employee>(employeeService.updateEmployee(employee, id), HttpStatus.OK);
 	}
+	
+	//build update particular fields in Employee
+	@PatchMapping("{id}")
+	public ResponseEntity<Employee>updateEmployee(@PathVariable("id") long id, @RequestBody Map<String, Object> fields ){
+		return new ResponseEntity<Employee>(employeeService.updateProductByFields(id, fields), HttpStatus.OK);
+	}
+	
 	//build  delete employee REST API
 	@DeleteMapping("{id}")
 	public ResponseEntity<String> deleteEmployee(@PathVariable("id")long id){
