@@ -29,12 +29,12 @@ public class EmployeeController {
 
 	
 	//build create employee REST API 
-	@PostMapping
+	@PostMapping("/save")
 	public ResponseEntity<Employee>saveEmployee(@RequestBody Employee employee){
 		return new ResponseEntity<Employee>(employeeService.saveEmployee(employee),HttpStatus.OK);
 	}
 	//build Get All Employee
-	@GetMapping
+	@GetMapping("/getAll")
 	public List<Employee>getAllEmployees(){
 		return employeeService.getAllEmployee();
 	}
